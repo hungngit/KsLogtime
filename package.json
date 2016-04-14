@@ -1,0 +1,23 @@
+{
+  "name": "redminelogtime",
+  "version": "1.0.0",
+  "description": "\"# KsLogtime\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hungngit/KsLogtime.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hungngit/KsLogtime/issues"
+  },
+  "homepage": "https://github.com/hungngit/KsLogtime#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

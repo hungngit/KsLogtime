@@ -11,7 +11,7 @@
 	<!-- <link rel="stylesheet" href="assets/css/style.css"> --> <!-- custom styles -->
 
 </head>
-<body ng-controller="rootCtrl">
+<body>
 	<div class="row-offcanvas row-offcanvas-left">
 		<div id="main">
 			<div class="col-md-12">
@@ -29,8 +29,10 @@
 	<!-- ANGULAR CUSTOM -->
 	<script src="app/app.module.js"></script>
 	<script src="app/app.routes.js"></script>
+	<script src="app/shared/service/apiService.js"></script>
+	<script src="app/home/homeController.js"></script>
 	
-	<!-- Solutions fo CORS -->
-	<script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js" slave="http://localhost:8080/index.html"></script>
+	<!-- Solutions for CORS -->
+	<script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js" slave="//nodejsproxy.herokuapp.com/index.html"></script>
 </body>
 </html>

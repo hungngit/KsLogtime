@@ -1,1 +1,4 @@
-The system cannot find the file specified.
+(function () {
+	'use strict';
+	angular.module('redmineLogtime', ['common.core', 'common.ui']);
+})();
