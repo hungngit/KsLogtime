@@ -8,8 +8,7 @@
 			.when('/', {
 				templateUrl: 'app/home/homeView.html',
 				controller: 'homeController',
-				controllerAs: 'h',
-				factory: 'homeService'
+				controllerAs: 'h'
 			}).otherwise({ redirectTo: "/" });;
 		$locationProvider.html5Mode(true);
 	}
