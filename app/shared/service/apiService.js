@@ -14,12 +14,14 @@
             get: get,
             post: post
         };
+        var config = {headers: {'X-Redmine-API-Key' : '58e93bc79d51bd7052a09ed5bc8597e851fb2e6d'}};
 		var proxyUrl = '//nodejsproxy.herokuapp.com/proxy?url=';
 		// Handle all get requests
-        function get(url, config, success, failure) {
+        function get(url, success, failure) {
             return $http.get(proxyUrl + encodeURI(url), config)
                     .then(function (result) {
-                        success(result);
+                        //success(result);
+                        console.log(result.data.time_entries);
                     }, function (error) {
                         
                         /*if (error.status == '404') {
@@ -50,4 +52,4 @@
         return service;
     }
 
-})(angular.module('common.core'));
+})(angular.module('redmineLogtime'));
