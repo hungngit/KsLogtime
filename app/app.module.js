@@ -1,4 +1,6 @@
-(function () {
+(function (app) {
 	'use strict';
-	angular.module('redmineLogtime', ['ngRoute']);
+	angular.module('app.module', [
+		'ngRoute'
+	]);
 })();

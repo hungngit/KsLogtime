@@ -15,7 +15,21 @@
 		}
 
 		function getTimeEntriesData(result) {
-			console.log(result.data.time_entries);
+			var viewObj = {};
+			var time_entries = result.data.time_entries;
+
+			angular.forEach(time_entries, function(data, i){
+				viewObj[i] = {
+					issueId: data.issue.id,
+					issueName: '',
+					ksLink: '',
+					DevName: data.user.name,
+					activity: data.activity.name,
+					hours: data.hours,
+					date: data.spent_on
+				};
+				console.table(data.user.name);
+			});
 		}
 
 		return homeService;

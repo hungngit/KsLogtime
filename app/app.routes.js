@@ -1,9 +1,9 @@
 (function (app) {
 	'use strict';
 	app.config(config);
-	config.$inject = ['$routeProvider', '$httpProvider', '$locationProvider'];
+	config.$inject = ['$routeProvider', '$locationProvider'];
 
-	function config($routeProvider, $httpProvider, $locationProvider) {
+	function config($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'app/home/homeView.html',
