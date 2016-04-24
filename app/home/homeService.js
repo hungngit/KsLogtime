@@ -35,7 +35,7 @@
 			return $q.all(promises);
 		}
 
-		function getIssueInfo(timeEntry, _i){
+		function getIssueInfo(timeEntry){
 			var d = $q.defer();
 			
 			(function loadIssue(id){
