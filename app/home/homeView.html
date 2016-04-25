@@ -1,2 +1,28 @@
-<div>aaaaaaaaaaaaaaa</div>
-<div>{{h.test}}</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Dev Id</th>
+			<th>Dev Name</th>
+			<th>Issue Id</th>
+			<th>Issue Name</th>
+			<th>Activity</th>
+			<th>Date</th>
+			<th>Hours</th>
+			<th>Ks Link</th>
+			<!-- <th>parentIssueId</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="timeEntry in timeEntries">
+			<td><a target="blank" href="http://14.161.22.172:3000/users/{{timeEntry.devId}}">{{timeEntry.devId}}</a></td>
+			<td><a target="blank" href="http://14.161.22.172:3000/users/{{timeEntry.devId}}">{{timeEntry.devName}}</a></td>
+			<td><a target="blank" href="http://14.161.22.172:3000/issues/{{timeEntry.issueId}}">{{timeEntry.issueId}}</a></td>
+			<td><a target="blank" href="http://14.161.22.172:3000/issues/{{timeEntry.issueId}}">{{timeEntry.issueName}}</a></td>
+			<td>{{timeEntry.activity}}</td>
+			<td>{{timeEntry.date}}</td>
+			<td>{{timeEntry.hours}}</td>
+			<td><a target="blank" href="{{timeEntry.ksLink}}">{{timeEntry.ksLink}}</a></td>
+			<!-- <td>{{timeEntry.parentIssueId}}</td> -->
+		</tr>
+	</tbody>
+</table>
