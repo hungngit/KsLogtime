@@ -2,11 +2,13 @@
 	'use strict';
 
 	app.controller('homeController', homeController);
-	homeController.$inject = ['$scope', 'homeService'];
+	homeController.$inject = ['$scope', '$q', 'homeService'];
 	
-	function homeController($scope, homeService) {
+	function homeController($scope, $q, homeService) {
 		this.test = 'Test from controller';
-		homeService.getTimeEntries();
+		homeService.getTimeEntries().then(function (timeEntries){
+			console.log(timeEntries);
+		});
 	}
 
 })(angular.module('redmineLogtime'));
