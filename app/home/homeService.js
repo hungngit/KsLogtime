@@ -10,7 +10,7 @@
 			getTimeEntries: getTimeEntries
 		}
 		
-		var spentOn = 't';
+		var spentOn = 'ld';
 		var timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]=' + spentOn + '&f[]=user_id&op[user_id]==&v[user_id][]=56&v[user_id][]=60&v[user_id][]=54&v[user_id][]=35&v[user_id][]=25&v[user_id][]=38&v[user_id][]=12&v[user_id][]=34&v[user_id][]=23&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
 		var issueUrl = 'http://14.161.22.172:3000/issues/{0}.json'
 		
@@ -19,25 +19,23 @@
 			apiService.get(timeEntriesUrl).then(function (data){
 				getSpentTimeAll(data.time_entries).then(function (timeEntries){
 					// Sort and group --- Start
-					/*var result = timeEntries.reduce(function(timeEntryMap, timeEntry) {
-						//console.log(timeEntry);
-						var key = timeEntry.childIssue + '-' + timeEntry.ksLink + '-' + timeEntry.date + '-' + timeEntry.devId;
-						//console.log('-----------------');
-						//console.log(key);
+					var timeEntriesGroup = timeEntries.reduce(function(timeEntryMap, timeEntry) {
+						var key = timeEntry.childIssue + '-'
+								+ timeEntry.ksLink + '-'
+								+ timeEntry.date + '-'
+								+ timeEntry.devId;
+						
 						if (!(key in timeEntryMap))
 							timeEntryMap.__array.push(timeEntryMap[key] = timeEntry);
 						else {
 							timeEntryMap[key].hours += timeEntry.hours;
-							//console.log(key);
 						}
-						//console.log(timeEntryMap);
 						return timeEntryMap;
 					}, {__array:[]}).__array.sort(function(a,b) { 
 						return a.devId - b.devId; 
-					});*/
+					});
 					// Sort --- End
-
-					d.resolve(timeEntries);
+					d.resolve(timeEntriesGroup);
 				});
 			});
 			return d.promise;
@@ -54,14 +52,36 @@
 
 		function getIssueInfo(timeEntry){
 			var d = $q.defer();
-			var childIssue = [];
+			
+			var spentTime = {
+				issueId: timeEntry.issue.id,
+				issueName: null,
+				trackerName: null,
+				devId: timeEntry.user.id,
+				devName: timeEntry.user.name,
+				activity: timeEntry.activity.name,
+				hours: timeEntry.hours,
+				date: timeEntry.spent_on,
+				parent: null
+			};
+
 			(function loadIssue(id){
 				apiService.get(issueUrl.replace('{0}', id)).then(function(data){
 					var issue = data.issue, 
-						ksLink = '';
-					childIssue.push({issueId: issue.id, issueName: issue.subject});
-					if ('CodingPhase' == issue.tracker.name){
-						return loadIssue(issue.parent.id);
+						ksLink = '',
+						parentId = issue.parent ? issue.parent.id : null;
+					if (!spentTime.issueName){
+						spentTime.issueName = issue.subject;
+					}
+					spentTime.issueName = spentTime.issueName ? spentTime.issueName : issue.subject;
+					spentTime.parent = spentTime.issueId == issue.id ? spentTime.parent : { 
+						issueId: issue.id,
+						issueName: issue.subject,
+						trackerName: issue.tracker.name
+					};
+
+					if (parentId && 'CodingPhase' == issue.tracker.name){
+						return loadIssue(parentId);
 					}
 
 					if('Task' == issue.tracker.name ||
@@ -70,34 +90,21 @@
 						angular.forEach(issue.custom_fields, function(field, i){
 							if ('KS_Link' == field.name){
 								ksLink = field.value;
-								if (ksLink.indexOf('/a02') < 0 && 'Task' != issue.tracker.name){
-									console.log(issue.parent.id);
-									return loadIssue(issue.parent.id);
-								}
 							}
 						});
+					}
+
+					if (parentId && ksLink && ksLink.indexOf('https://ap.salesforce.com/a021') < 0){
+						return loadIssue(parentId);
 					}
 
 					if ('★★Research&Training★★' == issue.tracker.name){
 						ksLink = 'https://ap.salesforce.com/a021000001824AJ';
 					}
-					console.log(ksLink);
-					var spentTime = {
-						issueId: timeEntry.issue.id,
-						issueName: issue.subject,
-						ksLink: ksLink,
-						devId: timeEntry.user.id,
-						devName: timeEntry.user.name,
-						activity: timeEntry.activity.name,
-						hours: timeEntry.hours,
-						date: timeEntry.spent_on,
-						childIssue: childIssue
-					};
-					d.resolve(spentTime);
 					
-					return d.promise;
+					spentTime.ksLink = ksLink;
+					d.resolve(spentTime);
 				});
-
 			})(timeEntry.issue.id);
 			return d.promise;
 		}
