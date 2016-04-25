@@ -1,6 +1,8 @@
-(function (app) {
+(function () {
 	'use strict';
-	app.config(config);
+	angular.module('app.routes', [
+		'app.module'
+	]).config(config);
 	config.$inject = ['$routeProvider', '$locationProvider'];
 
 	function config($routeProvider, $locationProvider) {
@@ -12,4 +14,4 @@
 			}).otherwise({ redirectTo: "/" });;
 		$locationProvider.html5Mode(true);
 	}
-})(angular.module('redmineLogtime'));
+})();

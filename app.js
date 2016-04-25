@@ -1,3 +1,6 @@
 (function () {
-	angular.module('redmineLogtime', ['app.module']);
+	angular.module('redmineLogtime', [
+		'app.module',
+		'app.routes'
+	]);
 })()
