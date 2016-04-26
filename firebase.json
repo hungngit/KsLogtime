@@ -1,0 +1,9 @@
+{
+  "firebase": "kslogtime",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

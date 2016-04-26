@@ -10,7 +10,7 @@
 			getTimeEntries: getTimeEntries
 		}
 		
-		var spentOn = 'ld';
+		var spentOn = 't';
 		var timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]=' + spentOn + '&f[]=user_id&op[user_id]==&v[user_id][]=56&v[user_id][]=60&v[user_id][]=54&v[user_id][]=35&v[user_id][]=25&v[user_id][]=38&v[user_id][]=12&v[user_id][]=34&v[user_id][]=23&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
 		var issueUrl = 'http://14.161.22.172:3000/issues/{0}.json'
 		
@@ -20,15 +20,16 @@
 				getSpentTimeAll(data.time_entries).then(function (timeEntries){
 					// Sort and group --- Start
 					var timeEntriesGroup = timeEntries.reduce(function(timeEntryMap, timeEntry) {
-						var key = timeEntry.childIssue + '-'
-								+ timeEntry.ksLink + '-'
+						var key = timeEntry.devId + '-'
+								+ timeEntry.issueId + '-'
 								+ timeEntry.date + '-'
-								+ timeEntry.devId;
+								+ timeEntry.ksLink;
 						
 						if (!(key in timeEntryMap))
 							timeEntryMap.__array.push(timeEntryMap[key] = timeEntry);
 						else {
-							timeEntryMap[key].hours += timeEntry.hours;
+							timeEntryMap[key].hours += timeEntry.child[0].hours;
+							timeEntryMap[key].child.push(timeEntry.child[0]);
 						}
 						return timeEntryMap;
 					}, {__array:[]}).__array.sort(function(a,b) { 
@@ -54,15 +55,23 @@
 			var d = $q.defer();
 			
 			var spentTime = {
+				devId: timeEntry.user.id,
+				devName: timeEntry.user.name,
 				issueId: timeEntry.issue.id,
 				issueName: null,
 				trackerName: null,
-				devId: timeEntry.user.id,
-				devName: timeEntry.user.name,
-				activity: timeEntry.activity.name,
-				hours: timeEntry.hours,
 				date: timeEntry.spent_on,
-				parent: null
+				hours: timeEntry.hours,
+				ksLink: null,
+				child: [{
+					issueId: timeEntry.issue.id,
+					issueName: null,
+					trackerName: null,
+					activity: timeEntry.activity.name,
+					date: timeEntry.spent_on,
+					hours: timeEntry.hours,
+					ksLink: null
+				}]
 			};
 
 			(function loadIssue(id){
@@ -73,33 +82,31 @@
 					if (!spentTime.issueName){
 						spentTime.issueName = issue.subject;
 					}
-					spentTime.issueName = spentTime.issueName ? spentTime.issueName : issue.subject;
-					spentTime.parent = spentTime.issueId == issue.id ? spentTime.parent : { 
-						issueId: issue.id,
-						issueName: issue.subject,
-						trackerName: issue.tracker.name
-					};
 
-					if (parentId && 'CodingPhase' == issue.tracker.name){
-						return loadIssue(parentId);
-					}
-
+					spentTime.issueId = issue.id;
+					spentTime.issueName = issue.subject;
+					spentTime.trackerName = issue.tracker.name;
+					
 					if('Task' == issue.tracker.name ||
 						'Change' == issue.tracker.name ||
 						'Bug' == issue.tracker.name){
-						angular.forEach(issue.custom_fields, function(field, i){
-							if ('KS_Link' == field.name){
-								ksLink = field.value;
-							}
-						});
+						ksLink = getKsLink(issue.custom_fields);
 					}
+
+					if ('★★Research&Training★★' == issue.tracker.name){
+						ksLink = 'https://ap.salesforce.com/a021000001824AJ';
+					}
+
+					spentTime.child[0].issueName = spentTime.child[0].issueName ? spentTime.child[0].issueName : issue.subject;
+					spentTime.child[0].trackerName = spentTime.child[0].trackerName ? spentTime.child[0].trackerName : issue.tracker.name;
+					spentTime.child[0].ksLink = spentTime.child[0].ksLink ? spentTime.child[0].ksLink : ksLink;
 
 					if (parentId && ksLink && ksLink.indexOf('https://ap.salesforce.com/a021') < 0){
 						return loadIssue(parentId);
 					}
 
-					if ('★★Research&Training★★' == issue.tracker.name){
-						ksLink = 'https://ap.salesforce.com/a021000001824AJ';
+					if (parentId && 'CodingPhase' == issue.tracker.name){
+						return loadIssue(parentId);
 					}
 					
 					spentTime.ksLink = ksLink;
@@ -107,6 +114,16 @@
 				});
 			})(timeEntry.issue.id);
 			return d.promise;
+		}
+
+		function getKsLink(custom_fields){
+			var ksLink = null;
+			angular.forEach(custom_fields, function(field, i){
+				if ('KS_Link' == field.name){
+					ksLink = field.value;
+				}
+			});
+			return ksLink;
 		}
 
 		return homeService;
