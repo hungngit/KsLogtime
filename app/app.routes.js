@@ -11,11 +11,15 @@
 				templateUrl: 'app/home/homeView.html',
 				controller: 'homeController',
 				controllerAs: 'h'
-			}).when('/:spentOn/', {
+			}).when('/spentOn/:spentOn/', {
 				templateUrl: 'app/home/homeView.html',
 				controller: 'homeController',
 				controllerAs: 'h'
-			}).when('/:spentOn/:isSu/', {
+			}).when('/super/:isSu/', {
+				templateUrl: 'app/home/homeView.html',
+				controller: 'homeController',
+				controllerAs: 'h'
+			}).when('/super/spentOn/:isSu/:spentOn/', {
 				templateUrl: 'app/home/homeView.html',
 				controller: 'homeController',
 				controllerAs: 'h'
