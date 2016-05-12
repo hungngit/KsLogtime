@@ -11,7 +11,15 @@
 				templateUrl: 'app/home/homeView.html',
 				controller: 'homeController',
 				controllerAs: 'h'
+			}).when('/:spentOn/', {
+				templateUrl: 'app/home/homeView.html',
+				controller: 'homeController',
+				controllerAs: 'h'
+			}).when('/:spentOn/:isSu/', {
+				templateUrl: 'app/home/homeView.html',
+				controller: 'homeController',
+				controllerAs: 'h'
 			}).otherwise({ redirectTo: "/" });;
-		$locationProvider.html5Mode(true);
+		//$locationProvider.html5Mode(true);
 	}
 })();

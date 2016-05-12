@@ -14,8 +14,6 @@
 				});
 				angular.forEach(warningTime, function(hours, devId){
 					if (hours < 8){
-						console.log(devId +'------@@@-----'+hours);
-						console.log($('.dev' + devId));
 						$('.dev' + devId).css('background', 'red');
 					}
 				});
@@ -23,13 +21,13 @@
 		};
 	})
 	app.controller('homeController', homeController);
-	homeController.$inject = ['$scope', '$timeout', 'homeService'];
+	homeController.$inject = ['$scope', '$routeParams', '$timeout', 'homeService'];
 	
-	function homeController($scope, $timeout, homeService) {
+	function homeController($scope, $routeParams, $timeout, homeService) {
 		$scope.openLogtime = openLogtime;
-
+		$scope.isSu = $routeParams.isSu;
 		function loadTimeEntries(){
-			homeService.getTimeEntries().then(function (timeEntries){
+			homeService.getTimeEntries($routeParams.spentOn).then(function (timeEntries){
 				$scope.timeEntries = timeEntries;
 			});
 		}
@@ -37,7 +35,10 @@
 		var i = 0;
 		function openLogtime(){
 			postData($scope.timeEntries[i++]);
-			if (i > $scope.timeEntries.length - 1) return;
+			if (i > $scope.timeEntries.length - 1) {
+				i = 0;
+				return;
+			}
 			$timeout(function(){
 				openLogtime();
 			}, 500);
@@ -96,7 +97,7 @@
 			if (timeEntry.child[0].trackerName == 'Change' || timeEntry.child[0].trackerName == 'Bug'){
 				return '開発 (Source Coding)';
 			}
-			if (timeEntry.child[0].trackerName == 'Task'){
+			if (timeEntry.child[0].trackerName == 'Task' || timeEntry.child[0].trackerName == '【RESEARCH】Self Study'){
 				return 'その他(Other)';
 			}
 		}

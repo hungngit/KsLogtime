@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQOd1YDq6V4EPu6oXXqFkYX5Kq.tAjhess_U_FMRd0SWQWl2tU4.dGyKIb5wAGSzoOLpb7Ewwdnl5ip_aog3fGKYLyKMn</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQIyffi6nsLXpDFhdZAlOlvQ02tFiXUUiaTfNKc8rTwnLVh2JCGiP_CtyEi5kNUlUPb.3xiI2z82EUkExRMX06Rv28Dh4</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQKbF4J8YBEOXjgU8P7qjshsL_D9jXiP2daYeLGZYXCVRpEKUFfAB37lq7NUtWTv1bv2GBFISQCIUuk9VBZdH3p3dOWns</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQBscYDec2lCVa4sSK8ztxaNVCA8MEtrZvX2Y6qGn8ankvKhHxULLBNOHdCd0nphaqzeF1mt4H1u9jsRel059KoSC5D1g</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00Dp00000000kwQ!AQEAQJWPIGCRhLc_i_UW60SiBTnPdc8yV1Ubs9ifBlM4XfTN5yzpiaH2vh9HQRAnvkk2GdZqzOeKVeU0Zb0MJ0Eh0Ox56EUO</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQORY3jyzhx4bcxX3iU3M1tT1IlRBuuRM1U1CErEKYbZRQvgOpmaaRoTmxwMpSZz9fcWMKpvXyi8UqNS8hkMfwhyVJaB2</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQORY3jyzhx4bcxX3iU3M1tT1IlRBuuRM1U1CErEKYbZRQvgOpmaaRoTmxwMpSZz9fcWMKpvXyi8UqNS8hkMfwhyVJaB2</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQORY3jyzhx4bcxX3iU3M1tT1IlRBuuRM1U1CErEKYbZRQvgOpmaaRoTmxwMpSZz9fcWMKpvXyi8UqNS8hkMfwhyVJaB2</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
