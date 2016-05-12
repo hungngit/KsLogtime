@@ -14,6 +14,9 @@
 		var issueUrl = 'http://14.161.22.172:3000/issues/{0}.json'
 		
 		function getTimeEntries(spentOn) {
+			if (!spentOn){
+				spentOn = 't';
+			}
 			var d = $q.defer();
 			apiService.get(timeEntriesUrl.replace('{0}', spentOn)).then(function (data){
 				getSpentTimeAll(data.time_entries).then(function (timeEntries){
