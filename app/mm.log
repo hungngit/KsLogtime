@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQMqJ6AIOyy2XQIm4XW7wXqSZzhX7MAdIjUAZqKqaW3Q5ByYv3xfM1QdL9n0oMuyfnmVMOmTaiu8OIdK3FukJk0UCl3VE</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <ns1:Body>
+      <ns0:login>
+         <ns0:username>admin@rsn.ryosan.co.jp.sandbox</ns0:username>
+         <ns0:password>keizu3333</ns0:password>
+      </ns0:login>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQMqJ6AIOyy2XQIm4XW7wXqSZzhX7MAdIjUAZqKqaW3Q5ByYv3xfM1QdL9n0oMuyfnmVMOmTaiu8OIdK3FukJk0UCl3VE</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <ns1:Body>
+      <ns0:login>
+         <ns0:username>admin@rsn.ryosan.co.jp.sandbox</ns0:username>
+         <ns0:password>keizu3333</ns0:password>
+      </ns0:login>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQMqJ6AIOyy2XQIm4XW7wXqSZzhX7MAdIjUAZqKqaW3Q5ByYv3xfM1QdL9n0oMuyfnmVMOmTaiu8OIdK3FukJk0UCl3VE</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <ns1:Body>
+      <ns0:login>
+         <ns0:username>admin@rsn.ryosan.co.jp.sandbox</ns0:username>
+         <ns0:password>keizu3333</ns0:password>
+      </ns0:login>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QkbQ!AQYAQMqJ6AIOyy2XQIm4XW7wXqSZzhX7MAdIjUAZqKqaW3Q5ByYv3xfM1QdL9n0oMuyfnmVMOmTaiu8OIdK3FukJk0UCl3VE</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <ns1:Body>
+      <ns0:login>
+         <ns0:username>admin@rsn.ryosan.co.jp.sandbox</ns0:username>
+         <ns0:password>keizu3333</ns0:password>
+      </ns0:login>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+Starting new HTTPS connection (1): cs6.salesforce.com
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQMxYyJvFCCMk7z8DsTzFYRb5TSbH3CAwTLNyoMSGzvR0jWH6r1p6_sJb6z7B1U8Ib0h7EAAFlvFZXAIrj3taPNdydN6_</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
