@@ -106,3 +106,14 @@ Starting new HTTPS connection (1): cs6.salesforce.com
       <ns0:getUserInfo/>
    </ns1:Body>
 </SOAP-ENV:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00DN0000000QbUk!AQoAQB124jvMLYo9hBFUmCWk4NjhqciBFVNhSN3CDtKA.ALTYqL2a_B3ypRiTgNkHCq2XS.Ut3ypV1qpWAEz15wglZT0ZkJj</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>

@@ -25,7 +25,12 @@
 	
 	function homeController($scope, $routeParams, $timeout, homeService) {
 		$scope.openLogtime = openLogtime;
-		$scope.isSu = $routeParams.isSu;
+		if ($routeParams.isSu == '0'){
+			$scope.isSu = false;
+		}else if ($routeParams.isSu == '1'){
+			$scope.isSu = true;
+		}
+
 		function loadTimeEntries(){
 			homeService.getTimeEntries($routeParams.spentOn).then(function (timeEntries){
 				$scope.timeEntries = timeEntries;

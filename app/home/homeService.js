@@ -17,6 +17,11 @@
 			if (!spentOn){
 				spentOn = 't';
 			}
+			
+			if (spentOn.length == 10){
+				spentOn = '=&v[spent_on][]=' + spentOn;
+			}
+
 			var d = $q.defer();
 			apiService.get(timeEntriesUrl.replace('{0}', spentOn)).then(function (data){
 				getSpentTimeAll(data.time_entries).then(function (timeEntries){
