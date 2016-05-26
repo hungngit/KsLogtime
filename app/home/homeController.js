@@ -102,7 +102,7 @@
 			if (timeEntry.child[0].trackerName == 'Change' || timeEntry.child[0].trackerName == 'Bug'){
 				return '開発 (Source Coding)';
 			}
-			if (timeEntry.child[0].trackerName == 'Task' || timeEntry.child[0].trackerName == '【RESEARCH】Self Study'){
+			if (timeEntry.child[0].trackerName == 'Task' || timeEntry.child[0].trackerName == '★★Research&Training★★'){
 				return 'その他(Other)';
 			}
 		}
