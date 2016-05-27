@@ -25,6 +25,7 @@
 	
 	function homeController($scope, $routeParams, $timeout, homeService) {
 		$scope.openLogtime = openLogtime;
+		$scope.token = {value: ''};
 		if ($routeParams.isSu == '0'){
 			$scope.isSu = false;
 		}else if ($routeParams.isSu == '1'){
@@ -60,6 +61,12 @@
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': getUserName(timeEntry.devId)}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBSH', 'value': timeEntry.hours}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBS7', 'value': timeEntry.date.replace(/-/g, '/')}));
+			
+			if ($scope.token.value != ''){
+				sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '_CONFIRMATIONTOKEN', 'value': $scope.token.value}));
+				sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'save'}));
+			}
+			
 			if (isChange(timeEntry)){
 				sfLogtimeForm.append($('<input>', {'type': 'checkbox', 'name': '00N10000002ntXW', 'checked': 'checked'}));
 			}
@@ -73,11 +80,9 @@
 				23: '012ビン',
 				25: '021ワン',
 				34: '028トゥオン',
-				35: '027ニュン',
 				38: '031クオウ・フン',
 				54: '042ユー',
-				56: '041バオ'/*,
-				60: 'Cuong'*/
+				56: '041バオ'
 			};
 			return userMap[rmId];
 		}
