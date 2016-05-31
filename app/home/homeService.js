@@ -5,15 +5,18 @@
 	homeService.$inject = ['$q', 'apiService'];
 
 	function homeService($q, apiService) {
-		var config = {headers: {'X-Redmine-API-Key' : '58e93bc79d51bd7052a09ed5bc8597e851fb2e6d'}};
 		var homeService = {
 			getTimeEntries: getTimeEntries
 		}
 		
-		var timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]={0}&f[]=user_id&op[user_id]==&v[user_id][]=56&v[user_id][]=60&v[user_id][]=54&v[user_id][]=35&v[user_id][]=25&v[user_id][]=38&v[user_id][]=12&v[user_id][]=34&v[user_id][]=23&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
+		var timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]={0}{1}&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
 		var issueUrl = 'http://14.161.22.172:3000/issues/{0}.json'
 		
-		function getTimeEntries(spentOn) {
+		function getTimeEntries(spentOn, userMap) {
+
+			var userFilter = '&f[]=user_id&op[user_id]==';
+			var userIds = userMap ? Object.keys(userMap) : null;
+
 			if (!spentOn){
 				spentOn = 't';
 			}
@@ -21,9 +24,17 @@
 			if (spentOn.length == 10){
 				spentOn = '=&v[spent_on][]=' + spentOn;
 			}
+			timeEntriesUrl = timeEntriesUrl.replace('{0}', spentOn);
+
+			if (userIds){
+				for (var i = 0; i < userIds.length; i++){
+					userFilter += '&v[user_id][]=' + userIds[i];
+				}
+				timeEntriesUrl = timeEntriesUrl.replace('{1}', userFilter);
+			}
 
 			var d = $q.defer();
-			apiService.get(timeEntriesUrl.replace('{0}', spentOn)).then(function (data){
+			apiService.get(timeEntriesUrl).then(function (data){
 				getSpentTimeAll(data.time_entries).then(function (timeEntries){
 					// Sort and group --- Start
 					var timeEntriesGroup = timeEntries.reduce(function(timeEntryMap, timeEntry) {

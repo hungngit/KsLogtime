@@ -1,31 +1,12 @@
 (function (app) {
 	'use strict';
-	app.run(run);
-	app.directive('onLastRepeat', function() {
-		return function(scope, element, attrs) {
-			if (scope.$last) setTimeout(function(){
-				var warningTime = {};
-				angular.forEach(scope.timeEntries, function(timeEntry, i){
-					if (!warningTime[timeEntry.devId]){
-						warningTime[timeEntry.devId] = timeEntry.hours;
-					}else{
-						warningTime[timeEntry.devId] += timeEntry.hours;
-					}
-				});
-				angular.forEach(warningTime, function(hours, devId){
-					if (hours < 8){
-						$('.dev' + devId).css('background', 'red');
-					}
-				});
-			}, 1);
-		};
-	})
+
 	app.controller('homeController', homeController);
-	homeController.$inject = ['$scope', '$routeParams', '$timeout', 'homeService'];
+	homeController.$inject = ['$rootScope', '$scope', '$routeParams', '$timeout', 'homeService'];
 	
-	function homeController($scope, $routeParams, $timeout, homeService) {
+	function homeController($rootScope, $scope, $routeParams, $timeout, homeService) {
 		$scope.openLogtime = openLogtime;
-		$scope.token = {value: ''};
+
 		if ($routeParams.isSu == '0'){
 			$scope.isSu = false;
 		}else if ($routeParams.isSu == '1'){
@@ -33,8 +14,27 @@
 		}
 
 		function loadTimeEntries(){
-			homeService.getTimeEntries($routeParams.spentOn).then(function (timeEntries){
+			homeService.getTimeEntries($routeParams.spentOn, $rootScope.userMap).then(function (timeEntries){
 				$scope.timeEntries = timeEntries;
+
+				var warningTime = {};
+				angular.forEach(timeEntries, function(timeEntry, i){
+					if (!warningTime[timeEntry.devId]){
+						warningTime[timeEntry.devId] = timeEntry.hours;
+					}else{
+						warningTime[timeEntry.devId] += timeEntry.hours;
+					}
+				});
+				$scope.warningTime = warningTime;
+
+				angular.forEach($rootScope.userMap, function(nameobj, devId){
+					if (!warningTime[devId]){
+						if (!$scope.notLogtime){
+							$scope.notLogtime = {};
+						}
+						$scope.notLogtime[devId] = nameobj.name;
+					}
+				});
 			});
 		}
 
@@ -58,7 +58,7 @@
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBR4', 'value': getLogType(timeEntry)}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'CF00N10000004mZwa_lkid', 'value': sfId}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'CF00N10000004mZwa', 'value': 'KSLogTimeTool'}));
-			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': getUserName(timeEntry.devId)}));
+			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': userMapKs[timeEntry.devId].namejp}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBSH', 'value': timeEntry.hours}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBS7', 'value': timeEntry.date.replace(/-/g, '/')}));
 			
@@ -72,19 +72,6 @@
 			}
 
 			sfLogtimeForm.appendTo('body').submit();
-		}
-
-		function getUserName(rmId){
-			var userMap = {
-				12: '015フン',
-				23: '012ビン',
-				25: '021ワン',
-				34: '028トゥオン',
-				38: '031クオウ・フン',
-				54: '042ユー',
-				56: '041バオ'
-			};
-			return userMap[rmId];
 		}
 
 		function getLogType(timeEntry){
@@ -123,14 +110,5 @@
 		}
 
 		loadTimeEntries();
-	}
-
-	function run(){
-		/*$(document).ready(function () {
-			var sfLoginForm = $('<form>', {'method': 'post', 'action': 'https://login.salesforce.com/?startURL=/', 'target': '_blank'}).hide();
-			sfLoginForm.append($('<input>', {'type': 'hidden', 'name': 'un', 'value': ''}));
-			sfLoginForm.append($('<input>', {'type': 'hidden', 'name': 'pw', 'value': ''}));
-			sfLoginForm.appendTo('body').submit();
-		});*/
 	}
 })(angular.module('redmineLogtime'));

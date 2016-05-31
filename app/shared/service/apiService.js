@@ -3,18 +3,18 @@
 
 	app.factory('apiService', apiService);
 
-	apiService.$inject = ['$http', '$q'];
+	apiService.$inject = ['$rootScope', '$http', '$q'];
 	
 	/**
 	 * Represents a Api Service.
 	 * Helps to handle all api call
 	 */
-	function apiService($http, $q) {
+	function apiService($rootScope, $http, $q) {
 		var service = {
 			get: get,
 			post: post
 		};
-		var config = {headers: {'X-Redmine-API-Key' : '58e93bc79d51bd7052a09ed5bc8597e851fb2e6d'}};
+		var config = $rootScope.headerConfig;
 		var proxyUrl = '//nodejsproxy.herokuapp.com/proxy?url=';
 		// Handle all get requests
 		function get(url) {
