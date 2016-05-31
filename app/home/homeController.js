@@ -58,7 +58,7 @@
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBR4', 'value': getLogType(timeEntry)}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'CF00N10000004mZwa_lkid', 'value': sfId}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'CF00N10000004mZwa', 'value': 'KSLogTimeTool'}));
-			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': userMapKs[timeEntry.devId].namejp}));
+			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': $rootScope.userMap[timeEntry.devId].namejp}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBSH', 'value': timeEntry.hours}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBS7', 'value': timeEntry.date.replace(/-/g, '/')}));
 			
