@@ -4,7 +4,7 @@
 
 	function onLastRepeat() {
 		return function($scope, $element, $attrs) {
-			if ($scope.$last) {
+			/*if ($scope.$last) {
 				setTimeout(function(){
 					angular.forEach($scope.warningTime, function(hours, devId){
 						if (hours < 8){
@@ -12,7 +12,7 @@
 						}
 					});
 				}, 1);
-			}
+			}*/
 		};
 	}
 })(angular.module('redmineLogtime'));

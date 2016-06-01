@@ -2,10 +2,27 @@
 	'use strict';
 
 	app.controller('homeController', homeController);
+	app.filter('notEnoughHours', notEnoughHours);
+
+	function notEnoughHours(){
+		return function(hourByUser, minHours) {
+			var hourByUserFilter = [];
+			angular.forEach(hourByUser, function(user, i) {
+				if (user.hours != 0 && user.hours < minHours) {
+					hourByUserFilter.push(user);
+				}
+			});
+			return hourByUserFilter;
+		}
+	}
+
 	homeController.$inject = ['$rootScope', '$scope', '$routeParams', '$timeout', 'homeService'];
 	
 	function homeController($rootScope, $scope, $routeParams, $timeout, homeService) {
 		$scope.openLogtime = openLogtime;
+		$scope.mouseenter = mouseenter;
+		$scope.mouseleave = mouseleave;
+		$scope.token = {value: ''};
 
 		if ($routeParams.isSu == '0'){
 			$scope.isSu = false;
@@ -13,29 +30,45 @@
 			$scope.isSu = true;
 		}
 
+		function mouseenter(devId){
+			$('.dev' + devId).css('font-weight', 'bold');
+		}
+
+		function mouseleave(devId){
+			$('.dev' + devId).css('font-weight', '');
+		}
+
 		function loadTimeEntries(){
 			homeService.getTimeEntries($routeParams.spentOn, $rootScope.userMap).then(function (timeEntries){
+				$scope.hourByUser = countHoursByUser(timeEntries);
 				$scope.timeEntries = timeEntries;
-
-				var warningTime = {};
-				angular.forEach(timeEntries, function(timeEntry, i){
-					if (!warningTime[timeEntry.devId]){
-						warningTime[timeEntry.devId] = timeEntry.hours;
-					}else{
-						warningTime[timeEntry.devId] += timeEntry.hours;
-					}
-				});
-				$scope.warningTime = warningTime;
-
-				angular.forEach($rootScope.userMap, function(nameobj, devId){
-					if (!warningTime[devId]){
-						if (!$scope.notLogtime){
-							$scope.notLogtime = {};
-						}
-						$scope.notLogtime[devId] = nameobj.name;
-					}
-				});
 			});
+		}
+
+		function countHoursByUser(timeEntries) {
+			var hourByUser = [];
+			angular.forEach(timeEntries, function(timeEntry, i){
+				if (!hourByUser[timeEntry.devId]){
+					hourByUser[timeEntry.devId] = {
+						devId: timeEntry.devId,
+						name: $rootScope.userMap[timeEntry.devId].name,
+						hours: timeEntry.hours
+					};
+				}else{
+					hourByUser[timeEntry.devId].hours += timeEntry.hours;
+				}
+			});
+
+			angular.forEach($rootScope.userMap, function(nameobj, devId){
+				if (!hourByUser[devId]){
+					hourByUser[devId] = {
+						devId: devId,
+						name: $rootScope.userMap[devId].name,
+						hours: 0
+					};
+				}
+			});
+			return Object.keys(hourByUser).map(function (key) {return hourByUser[key]});
 		}
 
 		var i = 0;

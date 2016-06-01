@@ -1,5 +1,14 @@
-<p ng-if="notLogtime">
-	<strong style="color: red">CHƯA LOGTIME ~!@#$%^&*: </strong><span ng-repeat="user in notLogtime"><code>{{user}}</code>&nbsp;</span>
+<p ng-if="(hourByUser|filter:{hours:0}).length > 0">
+	<strong style="color: red">CHƯA LOGTIME ~!@#$%^&*: </strong>
+	<span ng-repeat="user in (hourByUser|filter:{hours:0})">
+		<code>{{user.name}}</code>&nbsp;
+	</span>
+</p>
+<p ng-if="(hourByUser|notEnoughHours:8).length > 0">
+	<strong style="color: blue">LOGTIME THIẾU ~!@#$%^&*: </strong>
+	<span ng-repeat="user in (hourByUser|notEnoughHours:8)">
+		<code ng-mouseenter="mouseenter(user.devId)" ng-mouseleave="mouseleave(user.devId)">{{user.name}}: <b>{{user.hours}}</b></code>&nbsp;
+	</span>
 </p>
 <div>
 	<table class="table table-striped">
@@ -16,8 +25,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="timeEntry in timeEntries" on-last-repeat>
-				<td class="dev{{timeEntry.devId}}"><a target="blank" href="http://14.161.22.172:3000/users/{{timeEntry.devId}}">{{timeEntry.devId}}</a></td>
+			<tr class="dev{{timeEntry.devId}}" ng-repeat="timeEntry in timeEntries" on-last-repeat>
+				<td><a target="blank" href="http://14.161.22.172:3000/users/{{timeEntry.devId}}">{{timeEntry.devId}}</a></td>
 				<td><a target="blank" href="http://14.161.22.172:3000/users/{{timeEntry.devId}}">{{timeEntry.devName}}</a></td>
 				<td><a target="blank" href="http://14.161.22.172:3000/issues/{{timeEntry.issueId}}">{{timeEntry.issueId}}</a></td>
 				<td><a target="blank" href="http://14.161.22.172:3000/issues/{{timeEntry.issueId}}">{{timeEntry.issueName}}</a></td>
