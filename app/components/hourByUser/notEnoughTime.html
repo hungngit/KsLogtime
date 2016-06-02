@@ -1,0 +1,6 @@
+<p ng-if="notEnoughTimeUser.length > 0">
+	<strong style="color: blue">LOGTIME THIẾU ~!@#$%^&*: </strong>
+	<span ng-repeat="user in notEnoughTimeUser">
+		<code ng-mouseenter="mouseenter(user.devId)" ng-mouseleave="mouseleave(user.devId)">{{user.name}}: <b style="color: blue;">{{8 - user.hours}}</b>h</code>&nbsp;
+	</span>
+</p>

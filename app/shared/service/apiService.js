@@ -15,7 +15,7 @@
 			post: post
 		};
 		var config = $rootScope.headerConfig;
-		var proxyUrl = '//nodejsproxy.herokuapp.com/proxy?url=';
+		var proxyUrl = $rootScope.proxyUrl;
 		// Handle all get requests
 		function get(url) {
 			url = proxyUrl + encodeURI(url);

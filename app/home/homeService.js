@@ -2,33 +2,33 @@
 	'use strict';
 	app.factory('homeService', homeService);
 
-	homeService.$inject = ['$q', 'apiService'];
+	homeService.$inject = ['$rootScope', '$q', 'apiService'];
 
-	function homeService($q, apiService) {
+	function homeService($rootScope, $q, apiService) {
 		var homeService = {
 			getTimeEntries: getTimeEntries
 		}
 		
-		var timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]={0}{1}&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
-		var issueUrl = 'http://14.161.22.172:3000/issues/{0}.json'
+		var timeEntriesUrl = $rootScope.timeEntriesUrl;
+		var issueUrl = $rootScope.issueUrl;
 		
 		function getTimeEntries(spentOn, userMap) {
 
-			var userFilter = '&f[]=user_id&op[user_id]==';
+			var userFilter = $rootScope.userFilter;
 			var userIds = userMap ? Object.keys(userMap) : null;
 
 			if (!spentOn){
-				spentOn = 't';
+				spentOn = $rootScope.defaultSpentOn;
 			}
 			
 			if (spentOn.length == 10){
-				spentOn = '=&v[spent_on][]=' + spentOn;
+				spentOn = $rootScope.spentOnOption1 + spentOn;
 			}
 			timeEntriesUrl = timeEntriesUrl.replace('{0}', spentOn);
 
 			if (userIds){
 				for (var i = 0; i < userIds.length; i++){
-					userFilter += '&v[user_id][]=' + userIds[i];
+					userFilter += $rootScope.userFilterId + userIds[i];
 				}
 				timeEntriesUrl = timeEntriesUrl.replace('{1}', userFilter);
 			}
@@ -105,25 +105,25 @@
 					spentTime.issueName = issue.subject;
 					spentTime.trackerName = issue.tracker.name;
 					
-					if('Task' == issue.tracker.name ||
-						'Change' == issue.tracker.name ||
-						'Bug' == issue.tracker.name){
+					if($rootScope.task == issue.tracker.name ||
+						$rootScope.change == issue.tracker.name ||
+						$rootScope.bug == issue.tracker.name){
 						ksLink = getKsLink(issue.custom_fields);
 					}
 
-					if ('★★Research&Training★★' == issue.tracker.name){
-						ksLink = 'https://ap.salesforce.com/a021000001824AJ';
+					if ($rootScope.research == issue.tracker.name){
+						ksLink = $rootScope.ksLinkResearch;
 					}
 
 					spentTime.child[0].issueName = spentTime.child[0].issueName ? spentTime.child[0].issueName : issue.subject;
 					spentTime.child[0].trackerName = spentTime.child[0].trackerName ? spentTime.child[0].trackerName : issue.tracker.name;
 					spentTime.child[0].ksLink = spentTime.child[0].ksLink ? spentTime.child[0].ksLink : ksLink;
 
-					if (parentId && ksLink && ksLink.indexOf('https://ap.salesforce.com/a021') < 0){
+					if (parentId && ksLink && ksLink.indexOf($rootScope.ksLinkPrefix) < 0){
 						return loadIssue(parentId);
 					}
 
-					if (parentId && 'CodingPhase' == issue.tracker.name){
+					if (parentId && $rootScope.codingPhase == issue.tracker.name){
 						return loadIssue(parentId);
 					}
 					
@@ -137,7 +137,7 @@
 		function getKsLink(custom_fields){
 			var ksLink = null;
 			angular.forEach(custom_fields, function(field, i){
-				if ('KS_Link' == field.name){
+				if ($rootScope.ksLinkField == field.name){
 					ksLink = field.value;
 				}
 			});

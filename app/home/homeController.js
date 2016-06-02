@@ -2,23 +2,9 @@
 	'use strict';
 
 	app.controller('homeController', homeController);
-	app.filter('notEnoughHours', notEnoughHours);
-
-	function notEnoughHours(){
-		return function(hourByUser, minHours) {
-			var hourByUserFilter = [];
-			angular.forEach(hourByUser, function(user, i) {
-				if (user.hours != 0 && user.hours < minHours) {
-					hourByUserFilter.push(user);
-				}
-			});
-			return hourByUserFilter;
-		}
-	}
-
-	homeController.$inject = ['$rootScope', '$scope', '$routeParams', '$timeout', 'homeService'];
+	homeController.$inject = ['$rootScope', '$scope', '$routeParams', '$timeout', '$interval', 'homeService'];
 	
-	function homeController($rootScope, $scope, $routeParams, $timeout, homeService) {
+	function homeController($rootScope, $scope, $routeParams, $timeout, $interval, homeService) {
 		$scope.openLogtime = openLogtime;
 		$scope.mouseenter = mouseenter;
 		$scope.mouseleave = mouseleave;
@@ -40,7 +26,12 @@
 
 		function loadTimeEntries(){
 			homeService.getTimeEntries($routeParams.spentOn, $rootScope.userMap).then(function (timeEntries){
-				$scope.hourByUser = countHoursByUser(timeEntries);
+				$scope.timeByUser = countHoursByUser(timeEntries);
+				
+				if (timeEntries.length == 0){
+					commonUtils.unblockUI();
+				}
+
 				$scope.timeEntries = timeEntries;
 			});
 		}
@@ -142,6 +133,13 @@
 			return isCh;
 		}
 
+		commonUtils.blockUI();
 		loadTimeEntries();
+
+		// Put in interval, first trigger after 5 minutes 
+		$interval(function(){
+			commonUtils.blockUI();
+			loadTimeEntries();
+		}.bind(this), 5 * 60 * 1000);
 	}
 })(angular.module('redmineLogtime'));

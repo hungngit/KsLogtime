@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="redmineLogtime" lang="en">
+<html ng-app="redmineLogtime" lang="en" manifest="manifest.appcache">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="assets/css/style.css"> --> <!-- custom styles -->
 
 </head>
 <body>
@@ -21,22 +20,40 @@
 		</div>
 	</div><!--/row-offcanvas -->
 	
-	<!-- JS -->
-	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- JS Libraries -->
 	<script src="assets/libs/angular/angular.min.js"></script>
 	<script src="assets/libs/angular-route/angular-route.min.js"></script>
 
-	<!-- ANGULAR CUSTOM -->
-	<script src="app/app.constant.js"></script>
-	<script src="app/app.module.js"></script>
-	<script src="app/app.routes.js"></script>
+	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="assets/libs/blockUI/jquery.blockUI.js"></script>
+
+	<!-- JS Common -->
+	<script src="assets/js/commonUtils.js"></script>
+
+	<!-- ANGULAR Config -->
+	<script src="app/configs/app.constant.js"></script>
+	<script src="app/configs/app.module.js"></script>
+	<script src="app/configs/app.routes.js"></script>
 	<script src="app.js"></script>
+
+	<!-- ANGULAR Common API -->
 	<script src="app/shared/service/apiService.js"></script>
+
+
+	<!-- ANGULAR Home View -->
 	<script src="app/home/homeService.js"></script>
 	<script src="app/home/homeController.js"></script>
-	<script src="app/shared/article/notEnoughDirective.js"></script>
-	
+	<script src="app/home/onLastRepeatDirective.js"></script>
+
+	<!-- ANGULAR Directives -->
+	<script src="app/components/hourByUser/notEnoughTime.Directive.js"></script>
+	<script src="app/components/hourByUser/notYetLogTime.Directive.js"></script>
+	<!-- ANGULAR App Components -->
+
+	<!-- ANGULAR App Filters -->
+	<script src="app/filters/minTimeFilter.js"></script>
+
 	<!-- Solutions for CORS -->
 	<script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js" slave="//nodejsproxy.herokuapp.com/index.html"></script>
 </body>
