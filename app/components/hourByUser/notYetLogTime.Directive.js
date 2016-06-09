@@ -6,6 +6,7 @@
 	function notYetLogTime($filter) {
 		return {
 			restrict: 'E',
+			replace: true,
 			templateUrl: 'app/components/hourByUser/notYetLogTime.html',
 			link: function(scope, element, attrs){
 				scope.$watch(attrs.value, function (value){

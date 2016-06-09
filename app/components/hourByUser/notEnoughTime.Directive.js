@@ -6,6 +6,7 @@
 	function notEnoughTime($filter) {
 		return {
 			restrict: 'E',
+			replace: true,
 			templateUrl: 'app/components/hourByUser/notEnoughTime.html',
 			link: function(scope, element, attrs){
 				scope.$watch(attrs.value, function (value){

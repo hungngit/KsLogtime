@@ -107,7 +107,8 @@
 					
 					if($rootScope.task == issue.tracker.name ||
 						$rootScope.change == issue.tracker.name ||
-						$rootScope.bug == issue.tracker.name){
+						$rootScope.bug == issue.tracker.name ||
+						$rootScope.Investigate == issue.tracker.name){
 						ksLink = getKsLink(issue.custom_fields);
 					}
 

@@ -18,6 +18,7 @@
 		$rootScope.task = 'Task';
 		$rootScope.change = 'Change';
 		$rootScope.bug = 'Bug';
+		$rootScope.Investigate = 'Investigate'
 		$rootScope.codingPhase = 'CodingPhase';
 		$rootScope.research = '★★Research&Training★★';
 		$rootScope.ksLinkField = 'KS_Link';
@@ -31,8 +32,9 @@
 			25: {name: 'Quân', namejp: '021ワン'},
 			34: {name: 'Thường', namejp: '028トゥオン'},
 			38: {name: 'Quốc Hùng', namejp: '031クオウ・フン'},
-			54: {name: 'Lưu', namejp: '042ユー'},
-			56: {name: 'Bảo', namejp: '041バオ'}
+			56: {name: 'Bảo', namejp: '041バオ'},
+			51: {name: 'Tín', namejp: '040ティン'},
+			66: {name: 'Khoa', namejp: '054ホア'}
 		};
 	}
 })();

@@ -5,7 +5,14 @@ var commonUtils = (function($){
 	}
 
 	function blockUI(){
-		$.blockUI({ message: null });
+		$.blockUI({ 
+			message: '<img src="/assets/img/trollfaceship.gif"/>', 
+			css: { 
+				top:  ($(window).height() - 400) /2 + 'px', 
+				left: ($(window).width() - 400) /2 + 'px',
+				border: 0
+			} 
+		});
 	}
 
 	function unblockUI(){
