@@ -3,7 +3,7 @@
 
 	app.controller('homeController', homeController);
 	homeController.$inject = ['$rootScope', '$scope', '$routeParams', '$timeout', '$interval', 'homeService'];
-	
+
 	function homeController($rootScope, $scope, $routeParams, $timeout, $interval, homeService) {
 		$scope.openLogtime = openLogtime;
 		$scope.mouseenter = mouseenter;
@@ -27,7 +27,7 @@
 		function loadTimeEntries(){
 			homeService.getTimeEntries($routeParams.spentOn, $rootScope.userMap).then(function (timeEntries){
 				$scope.timeByUser = countHoursByUser(timeEntries);
-				
+
 				if (timeEntries.length == 0){
 					commonUtils.unblockUI();
 				}
@@ -85,12 +85,12 @@
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000004mZwf', 'value': $rootScope.userMap[timeEntry.devId].namejp}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBSH', 'value': timeEntry.hours}));
 			sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '00N10000002GBS7', 'value': timeEntry.date.replace(/-/g, '/')}));
-			
+
 			if ($scope.token.value != ''){
 				sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': '_CONFIRMATIONTOKEN', 'value': $scope.token.value}));
 				sfLogtimeForm.append($('<input>', {'type': 'hidden', 'name': 'save'}));
 			}
-			
+
 			if (isChange(timeEntry)){
 				sfLogtimeForm.append($('<input>', {'type': 'checkbox', 'name': '00N10000002ntXW', 'checked': 'checked'}));
 			}
@@ -118,7 +118,7 @@
 			if (timeEntry.child[0].trackerName == 'Change' || timeEntry.child[0].trackerName == 'Bug'){
 				return '開発 (Source Coding)';
 			}
-			if (timeEntry.child[0].trackerName == 'Task' || timeEntry.child[0].trackerName == '★★Research&Training★★'){
+			if (timeEntry.child[0].trackerName == 'Task' || timeEntry.child[0].trackerName == '★★Research&Training★★' || timeEntry.child[0].trackerName == 'Investigate'){
 				return 'その他(Other)';
 			}
 		}
@@ -136,7 +136,7 @@
 		commonUtils.blockUI();
 		loadTimeEntries();
 
-		// Put in interval, first trigger after 5 minutes 
+		// Put in interval, first trigger after 5 minutes
 		$interval(function(){
 			commonUtils.blockUI();
 			loadTimeEntries();
