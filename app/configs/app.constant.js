@@ -31,7 +31,6 @@
 			23: {name: 'Vinh', namejp: '012ビン'},
 			25: {name: 'Quân', namejp: '021ワン'},
 			34: {name: 'Thường', namejp: '028トゥオン'},
-			38: {name: 'Quốc Hùng', namejp: '031クオウ・フン'},
 			56: {name: 'Bảo', namejp: '041バオ'},
 			51: {name: 'Tín', namejp: '040ティン'},
 			66: {name: 'Khoa', namejp: '054ホア'}

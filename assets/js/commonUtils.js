@@ -5,7 +5,7 @@ var commonUtils = (function($){
 	}
 
 	function blockUI(){
-		var items = [1,2,3,4,5,6];
+		var items = [1,2,3,4,5];
 		var item = items[Math.floor(Math.random()*items.length)];
 		$.blockUI({
 			message: '<img style="max-width: 500px;" src="/assets/img/troll' + item + '.gif"/>',
