@@ -5,7 +5,7 @@
 
 	function run($rootScope){
 		$rootScope.headerConfig = {
-			headers: {'X-Redmine-API-Key' : '58e93bc79d51bd7052a09ed5bc8597e851fb2e6d'}
+			headers: {'X-Redmine-API-Key' : '051b233127dd745eaa5d5c21f0ab1e4848b62788'}
 		};
 		$rootScope.proxyUrl = '//nodejsproxy.herokuapp.com/proxy?url=';
 		$rootScope.timeEntriesUrl = 'http://14.161.22.172:3000/time_entries.json?f[]=spent_on&op[spent_on]={0}{1}&f[]=&c[]=project&c[]=spent_on&c[]=user&c[]=activity&c[]=issue&c[]=comments&c[]=hours';
